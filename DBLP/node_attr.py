@@ -5,6 +5,7 @@ import pdb
 import re
 # import numpy as np 
 from collections import defaultdict
+import pandas as pd
 import os
 import sys
 
@@ -92,7 +93,7 @@ def clean_rule(title_list):
     # print(title_list)
     return title_list
 
-clean_data('extracted_token.npy')
+# clean_data('extracted_token.npy')
 
 def merge_title_to_matrix(name='extracted_token_filtered.npy'):
     title_all_token = []
@@ -101,9 +102,19 @@ def merge_title_to_matrix(name='extracted_token_filtered.npy'):
         title_all_token.extend(value['title'])
     title_all_token = list(set(title_all_token))
     title_all_token.sort()
-    print(title_all_token[-100:])
+    #print(title_all_token[-100:])
     print(f'token_len: {title_all_token.__len__()}')
-    pass
+    np.save('titile_token', np.asarray(title_all_token))
+    # save token
+    # with open('dblp_content.txt', 'w') as dblp:
+    author_content = np.empty(shape=(len(author_dict.keys()), title_all_token.__len__()), dtype=int)
+    for value in tqdm(author_dict.values()):
+        for token in value['title']:
+            author_content[value['idx']][title_all_token.index(token)] = 1
+    df = pd.DataFrame(author_content)
+    df.to_csv('dblp_content.txt', sep='\t')
+
+
 
 merge_title_to_matrix()
 
