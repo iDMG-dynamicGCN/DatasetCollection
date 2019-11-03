@@ -1,0 +1,27 @@
+load trainging data--------------
+
+Read network snapshot #2010
+Read network snapshot #2011
+Read network snapshot #2012
+Read network snapshot #2013
+Read network snapshot #2014
+Read network snapshot #2015
+current network snapshot #2015
+Read network snapshot #2016
+next network snapshot #2016
+Train #0, Loss: 0.012723
+Train #100, Loss: 0.000659
+Train #200, Loss: 0.000659
+Train #300, Loss: 0.000659
+Train #400, Loss: 0.000659
+Train #500, Loss: 0.000659
+Train #600, Loss: 0.000659
+Train #700, Loss: 0.000659
+Train #800, Loss: 0.000659
+Train #900, Loss: 0.000659
+load testing data--------------
+
+current network snapshot #2016
+Read network snapshot #2017
+next network snapshot #2017
+Test, Loss: 0.000620
