@@ -48,4 +48,4 @@ class LSTM(nn.Module):   #layers=2?  和时序展开区分开
     def forward(self, x):
         out, hidden = self.lstm(x)   #?x怎么对应GCN   out hidden
         last_hidden_out = out[-1]   #?last_hidden_out = out[:, -1, :].squeeze()
-        return self.linear(last_hidden_out)
+        return F.softmax(self.linear(last_hidden_out), dim=1), self.linear(last_hidden_out)    # ？用softmax来做分类
